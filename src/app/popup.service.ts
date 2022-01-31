@@ -10,8 +10,7 @@ export class PopupService {
               private applicationRef: ApplicationRef,
               private componentFactoryResolver: ComponentFactoryResolver) {}
 
-  // Previous dynamic-loading method required you to set up infrastructure
-  // before adding the popup to the DOM.
+  //  dynamic-loading method for adding the popup to the DOM. (angular way)
   showAsComponent(message: string) {
     // Create element
     const popup = document.createElement('popup-component');
@@ -38,8 +37,9 @@ export class PopupService {
 
   // This uses the new custom-element method to add the popup to the DOM.
   showAsElement(message: string) {
-    // Create element
-    const popupEl: NgElement & WithProperties<PopupComponent> = document.createElement('popup-element') as any;
+    // Create element !!ojo === creates since it's already defined <popup-element>
+    const popupEl: NgElement & WithProperties<PopupComponent> 
+                = document.createElement('popup-element') as any;
 
     // Listen to the close event
     popupEl.addEventListener('closed', () => document.body.removeChild(popupEl));

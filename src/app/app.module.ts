@@ -13,4 +13,5 @@ import { PopupService } from './popup.service';
   bootstrap: [AppComponent],
 })
 export class AppModule {
+  //!! registering the component as a custom element not necessarily done here!!
 }
